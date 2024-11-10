@@ -19,11 +19,7 @@ def sign_in(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         print(f'{username}, {password}')
-        user = authenticate(username = username, password = password)
 
-        if user is not None:
-            return redirect('home_page')
-        
     else:
         form
         return render(request, 'user_app/sign_in.html', {'sign_in': form})
