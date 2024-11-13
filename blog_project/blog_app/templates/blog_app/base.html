@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="Input 1">
-        <input type="text" name="Input 2">
-        <input type="submit">
-    </form>
+<body class='p-0 m-0 box-border bg bg-black'>
+    
+    {% block content %}{% endblock %}
 </body>
 </html>

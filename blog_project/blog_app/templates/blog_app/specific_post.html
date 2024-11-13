@@ -1,0 +1,14 @@
+{% extends "blog_app/base.html" %}
+{% block content %}
+<div class="text-white p-4">
+    <p>{{specific_post.user}}</p>
+    <p>{{specific_post.date_posted}}</p>
+    <div class="border"></div>
+    <h1>{{specific_post.title}}</h1>
+    <p>{{specific_post.content}}</p>
+    <a href="{% url 'updating_post_page' pk=specific_post.id %}">To update the current post</a>
+    <br>
+    <a href="{% url 'delete_post_page' pk=specific_post.id %}">To delete the current post</a>
+</div>
+    
+{% endblock content %}

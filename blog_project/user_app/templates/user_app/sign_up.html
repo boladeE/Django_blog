@@ -5,31 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        input {
-            font-weight: bold;
-            color: #333;
-            background-color: transparent;
-            border-radius: 0.5rem;
-            border: 2px solid white;
-            padding-top: 10px;
-        }
-    </style>
 </head>
-<body class="flex justify-center items-center p-0 m-0 box-border w-screen h-screen bg-gray-900 text-white">
-    <div>
-        <form method="post" class="border-[2px]  rounded-3xl shadow-lg p-8">
+<body class="flex justify-center items-center p-0 m-0 box-border w-screen h-screen bg-gray-900">
+    <div class="bg-white border-[2px]  rounded-3xl shadow-lg p-8">
+        {% load crispy_forms_tags %}
+        <form method="post">
             {% csrf_token %}
-            {% for field in sign_up%}
-                <div class="mb-4">
-                    <label for="{{field.id_for_label}}">{{field.label}}:</label>
-                    <p>{{ field }}</p>
-                    <p>{{field.help_text}}</p>
-                </div>
-            {%endfor%}
-
-            <button type="submit">Submit</button>
+            {{ sign_up_form|crispy }}
+            <button type="submit" class="bg-yellow-500 px-2 py-1 rounded-lg hover:bg-yellow-400">Submit</button>
         </form>
+
+        <p class="mt-4 mb-1">Already have an account:</p>
+        <a href="{% url 'sign_in_page' %}" class="px-3 py-1 bg-slate-600 text-white rounded-lg hover:bg-slate-500">Sign In</a>
     </div>
     
 </body>

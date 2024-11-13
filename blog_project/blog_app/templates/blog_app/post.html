@@ -1,0 +1,14 @@
+{% extends "blog_app/base.html"  %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="flex justify-center items-center w-full h-screen">
+    <div class="bg-white border-[2px]  rounded-3xl shadow-lg p-8">
+        <form method="post">
+            {% csrf_token %}
+            {{ new_post_form|crispy }}
+            <button type="submit" class="bg-yellow-500 px-2 py-1 rounded-lg hover:bg-yellow-400">Post</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
