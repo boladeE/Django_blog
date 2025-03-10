@@ -1,14 +1,16 @@
 {% extends "blog_app/base.html" %}
 {% block content %}
-<div class="text-white p-4">
-    <p>{{specific_post.user}}</p>
-    <p>{{specific_post.date_posted}}</p>
-    <div class="border"></div>
-    <h1>{{specific_post.title}}</h1>
-    <p>{{specific_post.content}}</p>
-    <a href="{% url 'updating_post_page' pk=specific_post.id %}">To update the current post</a>
-    <br>
-    <a href="{% url 'delete_post_page' pk=specific_post.id %}">To delete the current post</a>
+<div class="container mx-auto max-w-3xl text-white p-6 bg-gray-800 rounded-lg shadow-lg mt-8">
+    <div class="flex justify-between items-center mb-4">
+        <p class="text-sm text-gray-400">{{specific_post.user}}</p>
+        <p class="text-sm text-gray-400">{{specific_post.date_posted}}</p>
+    </div>
+    <div class="border-b border-gray-700 mb-4"></div>
+    <h1 class="text-3xl font-bold mb-4">{{specific_post.title}}</h1>
+    <p class="text-gray-300 mb-6">{{specific_post.content}}</p>
+    <div class="flex space-x-4">
+        <a href="{% url 'updating_post_page' pk=specific_post.id %}" class="text-blue-500 hover:underline">Update Post</a>
+        <a href="{% url 'delete_post_page' pk=specific_post.id %}" class="text-red-500 hover:underline">Delete Post</a>
+    </div>
 </div>
-    
 {% endblock content %}
