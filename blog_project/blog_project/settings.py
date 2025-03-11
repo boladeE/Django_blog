@@ -133,3 +133,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CRISPY_TEMPLATE_PACK = "tailwind" 
 
 LOGIN_REDIRECT_URL = "home_page"
+
+LOGIN_URL = "login_page"
