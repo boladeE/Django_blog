@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
 from .models import Post
 from .forms import NewPostForm
+from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 def home_page(request):
     autumn = Post.objects.all()
     return render(request, 'blog_app/index.html', {'posts': autumn})
-
 
 def reading_posts(request, pk):
     specific_post = Post.objects.get(pk=pk)

@@ -1,17 +1,7 @@
+from .forms import SignUpForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import SignUpForm
 from django.contrib.auth import authenticate, login, logout
-from transformers import pipeline
-
-# Load the model and tokenizer from Hugging Face
-generator = pipeline('text-generation', model='gpt2')
-
-def generate_blog_post(prompt):
-    from transformers import pipeline
-    generator = pipeline('text-generation', model='gpt2')
-    response = generator(prompt, max_length=200, num_return_sequences=1)
-    return response[0]['generated_text']
 
 
 def sign_up(request):
