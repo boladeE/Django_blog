@@ -8,7 +8,7 @@ def sign_up(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('sign_in_page')
+            return redirect('login_page')
     else:
         form = SignUpForm()
     return render(request, 'user_app/sign_up.html', {'sign_up_form': form})
