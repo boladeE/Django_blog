@@ -10,6 +10,10 @@
         {% for post in posts %}
         <a href="{% url 'reading_post_page' pk=post.id%}" class="block bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300">
             <div class="flex justify-between items-center mb-4">
+                <img class="h-20 w-20 rounded-full object-cover" 
+                                 src="{{ post.user.profile.profile_image.url }}" 
+                                 alt="Profile picture">
+                                 
                 <p class="text-sm text-gray-400">{{post.user}}</p>
                 <p class="text-sm text-gray-400">{{post.date_posted}}</p>
             </div>
