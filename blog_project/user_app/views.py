@@ -2,9 +2,46 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.views import *
+from django.contrib.messages.views import SuccessMessageMixin
 
 
+class PasswordsChangeView(PasswordChangeView, SuccessMessageMixin):
+    template_name = 'user_app/change_password.html'
+    success_url = '/'
+    success_message = "Your password has been successfully changed"
 
+class LoginView(LoginView, SuccessMessageMixin):
+    template_name = 'user_app/login.html'
+
+    def form_valid(self, form):
+        messages.success(self.request, "Login successful! Welcome back.")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, "Invalid username or password. Please try again.")
+        return super().form_invalid(form)
+
+class LogoutView(LogoutView, SuccessMessageMixin):
+    next_page = '/'
+    # success_message = 'You have successfully logged out'
+
+    # def dispatch(self, request, *args, **kwargs):
+    #     messages.info(request, "You have been logged out successfully.")
+    #     return redirect("login_page")  # Redirect to login page
+
+class PasswordResetView(PasswordResetView, SuccessMessageMixin):
+    template_name = 'user_app/reset_password.html'
+
+class PasswordResetDoneView(PasswordResetDoneView, SuccessMessageMixin):
+    template_name = 'user_app/password_reset_sent.html'
+
+class PasswordResetConfirmView(PasswordResetConfirmView, SuccessMessageMixin):
+    template_name = 'user_app/password_reset_form.html'
+
+class PasswordResetCompleteView(PasswordResetCompleteView, SuccessMessageMixin):
+    template_name = 'user_app/password_reset_done.html'
+    
 def sign_up(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
