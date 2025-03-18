@@ -43,6 +43,9 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 #         return redirect('home_page')
 #     return render(request, 'blog_app/post.html', {'new_post_form': form})
 
+# About page function based view
+def about_page(request):
+    return render(request, 'blog_app/about.html')
 
 # Class based views for blog_app
 class PostListView(ListView):

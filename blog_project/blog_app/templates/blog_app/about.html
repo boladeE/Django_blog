@@ -1,0 +1,39 @@
+{% extends 'blog_app/base.html' %}
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-8">
+        <h1 class="text-4xl font-bold mb-6 text-gray-800">About My Django Blog</h1>
+        
+        <div class="prose lg:prose-xl">
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Project Overview</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    This blog was built using Django, a high-level Python web framework. It implements modern development practices 
+                    and features a clean, responsive design using Tailwind CSS.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Key Features</h2>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>Class-Based Views for efficient code organization</li>
+                    <li>User Authentication system</li>
+                    <li>Responsive design with Tailwind CSS</li>
+                    <li>CRUD operations for blog posts</li>
+                    <li>Clean and modern UI/UX</li>
+                </ul>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Technical Stack</h2>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>Django Framework</li>
+                    <li>Tailwind CSS</li>
+                    <li>SQLite Database</li>
+                    <li>Python</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
