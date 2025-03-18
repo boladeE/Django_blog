@@ -1,4 +1,5 @@
 /virtual_environment
 
-db.sqlite3
+/blog_project/db.sqlite3
 
+blog_project/.env
