@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "blog_app",
     "user_app",
     "crispy_forms",
-    "crispy_bootstrap5",
     "crispy_tailwind"
 ]
 
