@@ -1,4 +1,4 @@
-/virtual_environment
+/.venv
 
 /blog_project/db.sqlite3
 
