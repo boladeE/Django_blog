@@ -2,8 +2,14 @@
 
 /blog_project/db.sqlite3
 
-blog_project/.env
+.env
 
 /.pytest_cache
 
 /blog_project/Makefile
+
+/blog_project/static
+
+/pg_data
+
+**/__pycache__/

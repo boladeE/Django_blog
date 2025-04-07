@@ -1,9 +1,11 @@
-from .models import Post
-from .forms import NewPostForm
-from django.urls import reverse_lazy
-from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
+
+from .forms import NewPostForm
+from .models import Post
 
 # Function based views for blog_app
 # def home_page(request):
@@ -43,22 +45,26 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 #         return redirect('home_page')
 #     return render(request, 'blog_app/post.html', {'new_post_form': form})
 
+
 # About page function based view
 def about_page(request):
-    return render(request, 'blog_app/about.html')
+    return render(request, "blog_app/about.html")
+
 
 # Class based views for blog_app
 class PostListView(ListView):
     model = Post
     paginate_by = 5
-    template_name = 'blog_app/index.html'
-    context_object_name = 'posts'
-    ordering = ['-date_posted']
+    template_name = "blog_app/index.html"
+    context_object_name = "posts"
+    ordering = ["-date_posted"]
+
 
 class PostDetailView(DetailView):
     model = Post
-    context_object_name = 'specific_post'
-    template_name = 'blog_app/specific_post.html'
+    context_object_name = "specific_post"
+    template_name = "blog_app/specific_post.html"
+
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
@@ -69,21 +75,22 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.user:
             return True
         return False
-    
+
+
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
-    template_name = 'blog_app/post.html'
+    fields = ["title", "content"]
+    template_name = "blog_app/post.html"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-    
-    
+
+
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
-    template_name = 'blog_app/post.html'
+    fields = ["title", "content"]
+    template_name = "blog_app/post.html"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
