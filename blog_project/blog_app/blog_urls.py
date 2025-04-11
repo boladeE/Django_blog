@@ -9,7 +9,7 @@ from . import views
 #     path("user_post/<int:pk>", views.reading_posts, name='reading_post_page'),
 #     path("update_user_post/<int:pk>", views.updating_posts, name='updating_post_page'),
 #     path("delete_post/<int:pk>", views.deleting_posts, name='delete_post_page')
-# ]
+# 
 
 # Class based url patterns
 urlpatterns = [

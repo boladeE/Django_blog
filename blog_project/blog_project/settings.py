@@ -93,6 +93,7 @@ DATABASES = {
         "PASSWORD": POSTGRES_PASSWORD,
         "HOST": POSTGRES_HOST,  # 'db' is the service name in docker-compose
         "PORT": "5432",
+    
     }
 }
 

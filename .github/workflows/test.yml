@@ -21,7 +21,10 @@ jobs:
               run: |
                 python -m pip install --upgrade pip
                 pip install -r requirements.txt
-
+            
+              
             - name: Run tests
-              run: cd blog_project && pytest --maxfail=1 --disable-warnings -q 
+              run: |
+                docker-compse up -d --build
+                docker-compose exec django_app  sh -c "cd blog_project && pytest"
                 
