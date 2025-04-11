@@ -8,6 +8,11 @@ jobs:
     test:
         runs-on: ubuntu-latest
         environment: Testing Environment
+        env:
+          DEBUG: ${{ secrets.DEBUG }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DATABASE_ENGINE: ${{ secrets.DATABASE_ENGINE }}
+          
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
@@ -21,7 +26,9 @@ jobs:
               run: |
                 python -m pip install --upgrade pip
                 pip install -r requirements.txt    
-              
+            
+            - name: Checking enviroment variables
+              run: ${{ secrets.DATABASE_ENGINE}}
             - name: Run tests
               run: |
                 sh -c "cd blog_project && pytest"
