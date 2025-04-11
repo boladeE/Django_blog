@@ -39,5 +39,7 @@ jobs:
                 SECRET_KEY: ${{ secrets.SECRET_KEY }}
                 DATABASE_ENGINE: 'sqlite3'
               run: |
+                python manage.py makemigrations
+                python manage.py migrate
                 sh -c "cd blog_project && pytest"
                 
