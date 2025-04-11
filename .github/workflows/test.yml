@@ -10,6 +10,11 @@ jobs:
 
         environment: Testing Environment
 
+        env:
+          DEBUG: True
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DATABASE_ENGINE: 'sqlite3'
+          DATABASE_NAME: 'pg_db'
 
         steps:
             - name: Checkout code
@@ -24,20 +29,8 @@ jobs:
               run: |
                 python3 -m pip install --upgrade pip
                 pip install -r requirements.txt    
-            
-            # - name: Load environment variables
-            
-            #     DATABASE_ENGINE:
-            #     # Add other secrets/environment variables here
-            #     run: |
-            #       echo "DATABASE_ENGINE=$DATABASE_ENGINE" >> $GITHUB_ENV
-            #       # You can now use $DATABASE_ENGINE in subsequent steps
               
             - name: Run tests
-              env:
-                DEBUG: ${{ secrets.DEBUG }}
-                SECRET_KEY: ${{ secrets.SECRET_KEY }}
-                DATABASE_ENGINE: 'sqlite3'
               run: |
                 cd blog_project
                 python manage.py makemigrations

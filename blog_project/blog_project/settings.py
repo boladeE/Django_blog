@@ -81,20 +81,20 @@ WSGI_APPLICATION = "blog_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 POSTGRES_HOST = os.getenv("POSTGRES_HOST")
-POSTGRES_NAME = os.getenv("POSTGRES_NAME")
+DATABASE_NAME = os.getenv("DATABASE_NAME")
 POSTGRES_USER = os.getenv("POSTGRES_USER")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 
 DATABASES = {
     "default": {
-        # "ENGINE": f"django.db.backends.{os.getenv('DATABASE_ENGINE')}",
-        "ENGINE": "django.db.backends.sqlite3",
-        # "NAME": POSTGRES_NAME,
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        # "USER": POSTGRES_USER,
-        # "PASSWORD": POSTGRES_PASSWORD,
-        # "HOST": POSTGRES_HOST,  # 'db' is the service name in docker-compose
-        # "PORT": "5432",
+        # "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": f"django.db.backends.{os.getenv('DATABASE_ENGINE')}",
+        "NAME": DATABASE_NAME,
+        "USER": POSTGRES_USER,
+        "PASSWORD": POSTGRES_PASSWORD,
+        "HOST": POSTGRES_HOST,  # 'db' is the service name in docker-compose
+        "PORT": "5432",
     }
 }
 
