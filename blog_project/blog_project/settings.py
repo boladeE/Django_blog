@@ -87,8 +87,10 @@ POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 
 DATABASES = {
     "default": {
-        "ENGINE": f"django.db.backends.{os.getenv('DATABASE_ENGINE')}",
-        "NAME": POSTGRES_NAME,
+        # "ENGINE": f"django.db.backends.{os.getenv('DATABASE_ENGINE')}",
+        "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": POSTGRES_NAME,
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         # "USER": POSTGRES_USER,
         # "PASSWORD": POSTGRES_PASSWORD,
         # "HOST": POSTGRES_HOST,  # 'db' is the service name in docker-compose
