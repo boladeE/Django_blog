@@ -16,7 +16,7 @@ def post(user):
 
 
 @pytest.mark.django_db
-def test_post_creation(User, post):
+def test_post_creation(user, post):
     assert post.title == "Test Post"
     assert post.content == "Test content"
     assert post.user.username == "testuser"
