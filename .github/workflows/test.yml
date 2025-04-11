@@ -22,12 +22,17 @@ jobs:
 
             - name: Install dependencies
               run: |
-                python -m pip install --upgrade pip
+                python3 -m pip install --upgrade pip
                 pip install -r requirements.txt    
             
-            - name: Checking enviroment variables
-              run: ${{ secrets.DATABASE_ENGINE}}
-
+            # - name: Load environment variables
+            
+            #     DATABASE_ENGINE:
+            #     # Add other secrets/environment variables here
+            #     run: |
+            #       echo "DATABASE_ENGINE=$DATABASE_ENGINE" >> $GITHUB_ENV
+            #       # You can now use $DATABASE_ENGINE in subsequent steps
+              
             - name: Run tests
               env:
                 DEBUG: ${{ secrets.DEBUG }}
