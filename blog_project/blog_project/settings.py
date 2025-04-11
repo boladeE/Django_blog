@@ -85,15 +85,15 @@ POSTGRES_NAME = os.getenv("POSTGRES_NAME")
 POSTGRES_USER = os.getenv("POSTGRES_USER")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 
+print(f"POSTGRES_HOST: {os.getenv('DATABASE_ENGINE')}")
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": f"django.db.backends.{os.getenv('DATABASE_ENGINE')}",
         "NAME": POSTGRES_NAME,
-        "USER": POSTGRES_USER,
-        "PASSWORD": POSTGRES_PASSWORD,
-        "HOST": POSTGRES_HOST,  # 'db' is the service name in docker-compose
-        "PORT": "5432",
-    
+        # "USER": POSTGRES_USER,
+        # "PASSWORD": POSTGRES_PASSWORD,
+        # "HOST": POSTGRES_HOST,  # 'db' is the service name in docker-compose
+        # "PORT": "5432",
     }
 }
 

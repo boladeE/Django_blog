@@ -1,7 +1,31 @@
+# Virtual environment
 /.venv
 
+# Cache and temporary files
 /.pytest_cache
+__pycache__/
+*.pyc
+*.pyo
+*.tmp
+*.swp
+*.swo
+*.bak
 
+# Environment and configuration files
 .env
-
 /.github
+/.git
+/.gitignore
+
+# Logs and coverage reports
+*.log
+*.coverage
+
+# Operating system files
+.DS_Store
+
+# Project-specific files and directories
+/blog_project/db.sqlite3
+/blog_project/static/
+/blog_project/media/
+/pg_data
